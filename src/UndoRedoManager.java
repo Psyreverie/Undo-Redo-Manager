@@ -44,5 +44,19 @@ public class UndoRedoManager<T> {
         return current != null ? current.state : null;
     }
 
+    // This is the optional stuff
+    public void printHistory() {
+        Node<T> temp = current;
+        // Move to head
+        while (temp != null && temp.prev != null) {
+            temp = temp.prev;
+        }
+        System.out.print("History: ");
+        while (temp != null) {
+            System.out.print(temp.state + (temp == current ? "(current)" : "") + " <> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
     }
 
+}
